@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ダッシュボード</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <div class="content">
+    <h1>ダッシュボード</h1>
+
+    <h2>今日の予約</h2>
+    <div th:if="${#lists.isEmpty(todayReservations)}">
+        <p>本日の予約はありません</p>
+    </div>
+    <div th:each="r : ${todayReservations}">
+        <p th:text="${r.customerName + '/' + r.numGuests + '名/' + r.status}"></p>
+    </div>
+
+    <h2>集計</h2>
+    <p>今週の予約件数： <span th:text="${weeklyCount}"></span>件</p>
+    <p>今月の予約件数： <span th:text="${monthlyCount}"></span>件</p>
+    
+    <h2>OTA別件数</h2>
+    <div th:each="entry : ${countByOta}">
+        <p th:text="${entry.key + ':' + entry.value + '件'}"></p>
+    </div>
+
+    <h2>ステータス別件数</h2>
+    <div th:each="entry : ${countByStatus}">
+        <p th:text="${entry.key + ' : ' + entry.value + '件'}"></p>
+    </div>
+    
+    <h2>メニュー</h2>
+    <a href="/reservations">予約一覧</a>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

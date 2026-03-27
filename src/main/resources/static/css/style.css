@@ -1,0 +1,89 @@
+/* 全体 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #eaf4fb;
+    color: #1a252f;
+}
+
+/* ヘッダー */
+header {
+    background-color: #1a5276;
+    padding: 12px 24px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+header nav span {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+header nav a {
+    color: #aed6f1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+header nav a:hover {
+    color: #ffffff;
+}
+
+/* メインコンテンツ */
+main, .content {
+    padding: 24px;
+}
+
+h1 {
+    color: #1a5276;
+}
+
+/* テーブル */
+table {
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th, td {
+    border: 1px solid #aed6f1;
+    padding: 8px 16px;
+}
+
+th {
+    background-color: #2e86c1;
+    color: #ffffff;
+}
+
+/* ボタン */
+button {
+    background-color: #2e86c1;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #1a5276;
+}
+
+/* リンク */
+a {
+    color: #2e86c1;
+}
+
+/* フッター */
+footer {
+    background-color: #1a5276;
+    color: #aed6f1;
+    text-align: center;
+    padding: 12px;
+    margin-top: 40px;
+}

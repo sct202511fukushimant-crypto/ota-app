@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>予約詳細</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <h1>予約詳細</h1>
+    <a href="/reservations">一覧へ戻る</a>
+
+    <div th:if="${reservation}">
+        <table border="1">
+            <tr>
+                <th>予約ID</th>
+                <td th:text="${reservation.id}"></td>
+            </tr>
+            <tr>
+                <th>OTAソース</th>
+                <td th:text="${reservation.otaSource}"></td>
+            </tr>
+            <tr>
+                <th>お名前</th>
+                <td th:text="${reservation.customerName}"></td>
+            </tr>
+            <tr>
+                <th>メール</th>
+                <td th:text="${reservation.customerEmail}"></td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td th:text="${reservation.customerPhone}"></td>
+            </tr>
+            <tr>
+                <th>人数</th>
+                <td th:text="${reservation.numGuests}"></td>
+            </tr>
+            <tr>
+                <th>予約日</th>
+                <td th:text="${reservation.bookingDate}"></td>
+            </tr>
+            <tr>
+                <th>ステータス</th>
+                <td th:text="${reservation.status}"></td>
+            </tr>
+        </table>
+
+        <h2>ステータス変更</h2>
+        <form th:action="@{/reservations/{id}/status(id=${reservation.id})}" method="post">
+            <select name="status">
+                <option value="CONFIRMED">CONFIRMED</option>
+                <option value="CANCELLED">CANCELLED</option>
+            </select>
+            <button type="submit">更新</button>
+        </form>
+    </div>
+
+    <div th:unless="${reservation}">
+        <p>予約が見つかりませんでした。</p>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

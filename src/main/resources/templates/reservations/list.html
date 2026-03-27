@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>予約一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <div class="content">
+    <h1>予約一覧</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>OTA</th>
+                <th>お客様</th>
+                <th>人数</th>
+                <th>体験日</th>
+                <th>ステータス</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="r : ${reservations}">
+                <td th:text="${r.id}"></td>
+                <td th:text="${r.otaSource}"></td>
+                <td th:text="${r.customerName}"></td>
+                <td th:text="${r.numGuests}"></td>
+                <td th:text="${r.bookingDate}"></td>
+                <td th:text="${r.status}"></td>
+                <td><a th:href="@{/reservations/{id}(id=${r.id})}">詳細</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
