@@ -80,7 +80,9 @@ public class ReservationController {
 
         // キャンセルの場合は売り止め解除
         if ("CANCELLED".equals(status)) {
-            otaSyncService.sendReopen(LocalDate.now(), 1L);
+            reservationService.findById(id).ifPresent(r ->
+                otaSyncService.sendReopen(r.getBookingDate(), 1L)
+            );
         }
         return "redirect:/reservations/" + id;
     }

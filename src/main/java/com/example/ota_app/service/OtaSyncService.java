@@ -30,6 +30,7 @@ public class OtaSyncService {
         body.put("date", date.toString());
         body.put("timeSlotId", timeSlotId);
         body.put("available", available);
+        body.put("activityId", 1); // プランは１つなのでID固定
 
         try {
             restTemplate.postForObject(OTA_A_URL, body, Map.class);
